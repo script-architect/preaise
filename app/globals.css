@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-light: #0A0A0A;
+  --color-brand-dark: #FFFFFF;
+  --color-brand-accent: #0070F3;
+}
+
+/* ==========================================================================
+   ELITE UTILITY LAYER FOR NATIVE DYNAMIC THEME SYNCHRONIZATION (ZERO CRASH)
+   ========================================================================== */
+
+@layer utilities {
+  /* 1. GLOBAL ROOT BASE CONFIGURATION */
+  html {
+    background-color: #FFFFFF;
+    color: #0A0A0A;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  html.dark {
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+
+  /* 2. REVERSE STRUCTURAL UTILITIES FOR INHERITED WRAPPERS */
+  html:not(.dark) .bg-black {
+    background-color: #FFFFFF !important;
+  }
+
+  html:not(.dark) .text-white {
+    color: #0A0A0A !important;
+  }
+
+  html:not(.dark) .text-gray-400 {
+    color: #4B5563 !important; /* Soft premium mid-gray text for clean readability */
+  }
+
+  html:not(.dark) .border-white\/10 {
+    border-color: rgba(0, 0, 0, 0.08) !important;
+  }
+
+  html:not(.dark) .border-white\/20 {
+    border-color: rgba(0, 0, 0, 0.15) !important;
+  }
+
+  html:not(.dark) .border-white\/5 {
+    border-color: rgba(0, 0, 0, 0.05) !important;
+  }
+
+  /* 3. CARD AND GRID MATRICES ADAPTIVE SHIFTS */
+  html:not(.dark) .bg-white\/\[0\.01\],
+  html:not(.dark) .bg-white\/\[0\.02\] {
+    background-color: rgba(0, 0, 0, 0.02) !important;
+  }
+
+  html:not(.dark) .hover:bg-white\/\[0\.03\]:hover,
+  html:not(.dark) .hover:bg-white\/\[0\.05\]:hover {
+    background-color: rgba(0, 0, 0, 0.04) !important;
+  }
+
+  /* 4. SOLID INPUT FIELD DECONSTRUCTIONS FOR FORM STABILITY */
+  html:not(.dark) input,
+  html:not(.dark) select,
+  html:not(.dark) textarea {
+    background-color: rgba(0, 0, 0, 0.02) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    color: #0A0A0A !important;
+  }
+
+  html:not(.dark) input::placeholder,
+  html:not(.dark) textarea::placeholder {
+    color: #9CA3AF !important;
+  }
+
+  /* 5. INTERACTIVE COMPONENT MATRICES */
+  html:not(.dark) button[type="button"].bg-white\/5 {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    color: #0A0A0A !important;
+  }
+
+  html:not(.dark) button[type="button"].bg-brand-accent {
+    color: #FFFFFF !important; /* Forces selected category text to stay white over blue grid */
+  }
+
+  html:not(.dark) .bg-white.text-black {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+  }
+
+  html:not(.dark) .hover:bg-gray-200:hover {
+    background-color: #1F2937 !important;
+  }
+
+  /* 6. ADVANCED LINEAR SHINE OVERRIDE FOR LIGHT THEME GRAPHICS */
+  html:not(.dark) .text-transparent.bg-clip-text {
+    background-image: linear-gradient(to right, #0A0A0A, #4B5563, #0070F3) !important;
+  }
+}
+/* ==========================================================================
+   NAVBAR & FOOTER PREMIUM THEME RE-MAPPING MATRIX (ZERO MARKUP ALTERATION)
+   ========================================================================== */
+
+@layer utilities {
+  /* 1. NAVBAR LIGHT THEME DYNAMIC OVERRIDES */
+  html:not(.dark) nav {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    color: #0A0A0A !important;
+  }
+
+  /* Light mode mein brand headings aur links ka primary color correct shift */
+  html:not(.dark) nav .text-gray-300,
+  html:not(.dark) nav a {
+    color: #374151 !important; /* Premium corporate charcoal text for headers */
+  }
+
+  html:not(.dark) nav a:hover {
+    color: #0070F3 !important; /* Dynamic blue tracking hover links */
+  }
+
+  /* Theme button toggle border logic reset in light framework */
+  html:not(.dark) nav button.bg-white\/5 {
+    background-color: rgba(0, 0, 0, 0.03) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    color: #0A0A0A !important;
+  }
+
+  /* 2. FOOTER LIGHT THEME DYNAMIC OVERRIDES */
+  html:not(.dark) footer {
+    background-color: #FAFAFA !important; /* Elegant ultra-light clean studio background */
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    color: #0A0A0A !important;
+  }
+
+  /* Structural heading labels inside footer pillars */
+  html:not(.dark) footer .text-gray-200,
+  html:not(.dark) footer h4 {
+    color: #111827 !important;
+    font-weight: 700 !important;
+  }
+
+  /* Quick navigation links array reset inside footer */
+  html:not(.dark) footer .text-gray-400,
+  html:not(.dark) footer p,
+  html:not(.dark) footer span:not(.text-brand-accent) {
+    color: #4B5563 !important;
+  }
+
+  html:not(.dark) footer ul a:hover {
+    color: #0070F3 !important;
+  }
+
+  /* 3. COMMON INVERTED CALL TO ACTION BUTTON SETTINGS */
+  html:not(.dark) nav .bg-white.text-black,
+  html:not(.dark) footer .bg-white.text-black {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+  }
+
+  html:not(.dark) nav .bg-white.text-black:hover,
+  html:not(.dark) footer .bg-white.text-black:hover {
+    background-color: #1F2937 !important;
+  }
+}
+
