@@ -9,7 +9,8 @@ export default function Navbar() {
 
     const toggleTheme = () => {
         const root = document.documentElement;
-        if (isDarkMode) {
+        const currentTheme = root.classList.contains("dark");
+        if (currentTheme) {
             root.classList.remove("dark");
             setIsDarkMode(false);
         } else {
@@ -39,13 +40,13 @@ export default function Navbar() {
                 </div>
 
                 {/* Interactive Light/Dark Mode Swither */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-1 sm:gap-4 md:gap-6">
                     <button 
                         type="button"
                         onClick={toggleTheme}
-                        className="p-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-xs font-bold tracking-widest uppercase cursor-pointer"
+                        className="px-3 py-2 md:p-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-[10px] md:text-xs font-bold tracking-widest uppercase cursor-pointer whitespace-nowrap"
                     >
-                        {isDarkMode ? "☀️ Light" : "🌙 Dark"}
+                        {isDarkMode ? "☀️ " : "🌙 "}
                     </button>
                 </div>
 
