@@ -1,0 +1,40 @@
+#CI/CD Engine
+name: Enterprise Production Deployment Pipeline
+
+on:
+    push:
+        branches:
+            -m # whatever pushed on main branch this engine will automaticall fired up
+
+jobs: 
+    build-and-deploy:
+        runs-on: ubuntu-latest # latest linux virtual machine will automatically active on cloud
+
+        steps:
+            # code checkout inside the virtual container
+            - name: Clone Repository Matrix
+              uses: actions/checkout@v4
+
+            # strict node.js environment caching and setting
+            - name: Initialize Node.js Environment
+              uses: actions/setup-node@v4
+              with:
+                node-version: 20
+                cache: 'npm'
+
+            # Fast dependency tree loading
+            - name: Install Secure Production Dependencies
+              run: npm ci --legacy-peer-deps
+            
+            # Next.js production build verification
+            - name: Execute Strict Production Compilation
+              run: npm run build
+            
+            # Instant Automated Cloud Deployment via Vercel
+            - name: Trigger Automated Production Vercel Ship
+              uses: amondnet/vercel-action@v20
+              with:
+                vercel-token: ${{ secrets.VERCEL_TOKEN}} # secure secret environment token tokens
+                vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+                vercel-project-id: ${{ secret.VERCEL_PROJECT_ID }}
+                vercel-args: '--prod'  # direct execution to live main domain url framework
